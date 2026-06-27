@@ -46,7 +46,7 @@ git init
 git checkout -b gh-pages
 git add .
 git commit -m "Site deploy - $(date '+%Y-%m-%d %H:%M:%S')"
-git remote add origin git@github.com:claudeblog/nefelibata.git
+git remote add origin git@github.com:"$GITHUB_PROJECT"
 git push origin gh-pages --force
 
 # Return to previous directory

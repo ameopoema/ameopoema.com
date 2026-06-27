@@ -1,6 +1,6 @@
 # My Blog with mdBook  
 
-Welcome to the **Nefelibata** repository — a static blog generated from Markdown files using **mdBook**.  
+Welcome to the **MDBLOG** repository — a static blog generated from Markdown files using **mdBook**.  
 
 The project is fully automated: with a single command, you install dependencies, generate the website, create the RSS feed, configure a custom domain, and publish everything to GitHub Pages (the `gh-pages` branch).  
 
@@ -37,8 +37,8 @@ The project is fully automated: with a single command, you install dependencies,
 ## 1. Clone the repository  
 
 ```bash  
-git clone https://github.com/claudeblog/nefelibata.git  
-cd nefelibata  
+git clone https://github.com/claudeblog/mdblog.git  
+cd mdblog  
 ```  
 
 ## 2. Create the `.env` file  
