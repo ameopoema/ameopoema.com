@@ -95,9 +95,16 @@ for filename in "${files[@]}"; do
     # Link
     link="${SITE_URL}/${base}.html"
 
-    # Content cleanup
+    # Content cleanup:
+    # - Remove first line if it starts with '# ' (title already extracted)
+    # - Remove lines that are exactly '######' (markdown horizontal rule)
+    # - Remove lines with '&nbsp;<br>' (common in some markdown exports)
+    # - Delete completely empty lines (optional – adjust if you want to keep them)
     filtered_content=$(sed -e '1{/^# /d}' -e '/^######/d' -e '/&nbsp;<br>/d' -e '/^[[:space:]]*$/d' "$filepath")
-    escaped_content=$(echo "$filtered_content" | sed 's/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g')
+
+    # Convert newlines to <br/> for better readability in podcast clients
+    # and protect against the rare ']]>' sequence inside the CDATA
+    content_for_xml=$(echo "$filtered_content" | sed -e ':a;N;$!ba;s/\n/<br\/>/g' -e 's/]]>/]]&gt;/g')
 
     # Audio detection
     audio_url=""
@@ -119,13 +126,13 @@ for filename in "${files[@]}"; do
         fi
     done
 
-    # Write item
+    # Write item – description is now wrapped in CDATA
     cat >> "$OUTPUT_FILE" <<ITEM
 <item>
 <title>${title}</title>
 <link>${link}</link>
 <pubDate>${pubdate}</pubDate>
-<description>${escaped_content}</description>
+<description><![CDATA[${content_for_xml}]]></description>
 ITEM
 
     # Optional enclosure
