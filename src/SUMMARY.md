@@ -1,4 +1,5 @@
 # Summary  
+- [Haicai dágua](2026-06-27-Haicai_dágua.md)  
 - [Haicai ao Artista](2026-06-22-Haicai_ao_Artista.md)  
 - [Haicai desejo](2026-06-02-Haicai_desejo.md)  
 - [Haicai preocupado](2026-06-01-Haicai_preocupado.md)  
