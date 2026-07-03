@@ -1,4 +1,4 @@
-# 575 Haicais 74 - Haicai de Passagem  
+# 575 Haicais 74 - Haicai de Passe  
 E passarinhou  
 Passageiro passista  
 Passe de mágica  
