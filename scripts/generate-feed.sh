@@ -95,12 +95,9 @@ for filename in "${files[@]}"; do
     # Link
     link="${SITE_URL}/${base}.html"
 
-    # Content cleanup: remove only the first line if it starts with '# '
-    # Preserve everything else (spaces, blank lines, special chars)
-    filtered_content=$(sed -e '1{/^# /d}' "$filepath")
-
-    # Convert newlines to <br/> for better readability, and protect against ]]>
-    content_for_xml=$(echo "$filtered_content" | sed -e ':a;N;$!ba;s/\n/<br\/>/g' -e 's/]]>/]]&gt;/g')
+    # Content cleanup
+    filtered_content=$(sed -e '1{/^# /d}' -e '/^######/d' -e '/&nbsp;<br>/d' -e '/^[[:space:]]*$/d' "$filepath")
+    escaped_content=$(echo "$filtered_content" | sed 's/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g')
 
     # Audio detection
     audio_url=""
@@ -113,7 +110,7 @@ for filename in "${files[@]}"; do
         if [[ -f "$audio_file" ]]; then
             audio_url="${SITE_URL}/${base}.${ext}"
             audio_length=$(stat -c %s "$audio_file" 2>/dev/null || stat -f %z "$audio_file" 2>/dev/null)
-            audio_type=$(get_mime_type "$ext")   # <--- ASPAS CORRIGIDAS AQUI
+            audio_type=$(get_mime_type "$ext")
 
             if command -v ffprobe &> /dev/null; then
                 audio_duration=$(ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 "$audio_file" 2>/dev/null | cut -d. -f1)
@@ -122,13 +119,13 @@ for filename in "${files[@]}"; do
         fi
     done
 
-    # Write item – description now uses CDATA
+    # Write item
     cat >> "$OUTPUT_FILE" <<ITEM
 <item>
 <title>${title}</title>
 <link>${link}</link>
 <pubDate>${pubdate}</pubDate>
-<description><![CDATA[${content_for_xml}]]></description>
+<description>${escaped_content}</description>
 ITEM
 
     # Optional enclosure

@@ -1,4 +1,12 @@
 # Summary  
+- [Haicaiu Doente](2026-10-07-Haicaiu_Doente.md)  
+- [Haicai À VoCê](2026-10-07-Haicai_À_VoCê.md)  
+- [Haicai Celebrado](2026-09-12-Haicai_Celebrado.md)  
+- [Haicai oficializado](2026-08-27-Haicai_oficializado.md)  
+- [Haicai decomposto](2026-07-27-Haicai_decomposto.md)  
+- [Haicai de escritório](2026-07-25-Haicai_de_escritório.md)  
+- [Haicai nubívago](2026-07-07-Haicai_nubívago.md)  
+- [Haicai de caminho](2026-07-03-Haicai_de_caminho.md)  
 - [Haicai de caminho](2026-07-02-Haicai_de_caminho.md)  
 - [Haicai dágua](2026-07-01-Haicai_dágua.md)  
 - [Haicai ao Artista](2026-06-22-Haicai_ao_Artista.md)  

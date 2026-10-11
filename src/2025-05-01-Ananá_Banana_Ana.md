@@ -1,9 +1,7 @@
 # 575 Haicais 64 - Ananá, Banana, Ana  
-Ana,  
-Anita  
+Ana,Anita  
 Lana na banana  
-Latina,  
-Ana  
+Latina, Ana  
 - Palíndromo  
 
 
